@@ -8,6 +8,6 @@ export class AdminController {
 
     @Post('create-admin')
     async create(@Body() admin: Record<string, any>) {
-        return await this.userService.create(admin.username, admin.password)
+        return await this.userService.create(admin.id, admin.username, admin.password)
     }
 }

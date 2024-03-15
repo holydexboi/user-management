@@ -18,6 +18,7 @@ export class AuthService {
     const admin = await this.adminService.findOneByUsername(username);
 
     const match = await this.comparePassword(password, admin?.password);
+
     if (!match) {
       throw new UnauthorizedException();
     }

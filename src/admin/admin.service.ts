@@ -12,12 +12,14 @@ export class AdminService {
   ) {}
 
   async create(
+    id: number,
     username: string,
     password: string,
   ): Promise<{ access_token: string }> {
-    const newPass = this.hashPassword(password);
-    console.log(newPass)
+    const newPass = await this.hashPassword(password);
+
     let admin = await this.adminsReposittory.create<Admin>({
+      id,
       username,
       password: newPass,
     });
